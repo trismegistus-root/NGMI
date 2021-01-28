@@ -1,19 +1,26 @@
 {
-  "name": "ngmi_dependencies",
+  "name": "drizzle-box",
   "version": "1.0.0",
-  "description": "for managing ngmi dependencies",
+  "description": "",
   "main": "truffle-config.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "echo"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/truffle-box/drizzle-box.git"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/truffle-box/drizzle-box/issues"
+  },
+  "homepage": "https://github.com/truffle-box/drizzle-box#readme",
   "dependencies": {
-    "@drizzle/react-plugin": "^1.5.3",
-    "@openzeppelin/contracts": "^3.3.0",
-    "drizzle-react-components": "^1.4.0"
+    "@openzeppelin/contracts": "^2.5.1"
   }
 }

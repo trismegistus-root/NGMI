@@ -44,4 +44,5 @@ contract ngmi is ERC20 {
 
     emit ErcSwept(msg.sender, _to, _token, tBal);
   }
+
 }
