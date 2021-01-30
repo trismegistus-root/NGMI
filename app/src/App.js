@@ -10,7 +10,7 @@ let web3;
 class App extends React.Component{
 	constructor(props){
 		super(props);
-		this.state = { web3: null, accounts: null, contract: null};
+		this.state = { web3: null, accounts: null, contract: null, totalSupply: null};
 		this.mintToken = this.mintToken.bind(this);
 		this.addressReceipt = this.addressReceipt.bind(this);
 	}
@@ -27,8 +27,8 @@ class App extends React.Component{
 			ngmi.abi,
 			deployedNetwork && deployedNetwork.address,
 		  );														     //set this.state({contract})
-
-		  this.setState({ web3, accounts, contract: ngmiInstance}, this.runExample);
+		  const supply = await ngmiInstance.methods.["totalSupply"]().call();
+		  this.setState({ web3, accounts, contract: ngmiInstance, totalSupply: supply}, this.runExample);
 		} catch (error) {
 		  // Catch any errors for any of the above operations.
 		  alert(
@@ -43,8 +43,9 @@ class App extends React.Component{
 
 			await contract.methods.["getToken"]().send({ from: accounts[0]});
 			const ngmiResponse = await contract.methods.["getToken"]().call();
-
-			this.setState({ storageValue: ngmiResponse});
+			await contract.methods.["totalSupply"]().send({from: accounts[0]});
+			const supply = await contract.methods.["totalSupply"]().call();
+			this.setState({ storageValue: ngmiResponse, totalSupply: supply});
 			};
 
 		 addressReceipt(address){
@@ -58,7 +59,7 @@ class App extends React.Component{
 		  if (!this.state.web3) return <div>Wait a fucking moment, please - web3s bitch ass is still loading...</div>;
           return (
            <div>
-				<WhitePaper mint = {this.mintToken} address = {this.addressReceipt} accounts = {this.state.accounts}/>
+				<WhitePaper mint = {this.mintToken} address = {this.addressReceipt} accounts = {this.state.accounts} supply = {this.state.totalSupply}/>
 		   </div>
           )
        }
