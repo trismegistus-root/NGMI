@@ -4,26 +4,9 @@ import './WhitePaper.css';
 class WhitePaper extends React.Component{
 	constructor(props){
 		super(props);
-		this.state = {loading: null, drizzleState: null};
 }
-
-
-	componentDidMount() {
-		const { drizzle } = this.props;
-		this.unsubscribe = drizzle.store.subscribe(() => {
-		const drizzleState = drizzle.store.getState();
-		if (drizzleState.drizzleStatus.initialized) {
-		  this.setState({ loading: false, drizzleState });
-    }
-  });
-}
-
-	componentWillUnmount() {
-	  this.unsubscribe();
-	}
 
 	render(){
-	  if (this.state.loading) return "Wait a fucking second, please - Drizzle is loading...";
 	  return (
            <div>
 				<div id = "quick-intro">
