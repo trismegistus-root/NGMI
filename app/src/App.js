@@ -14,10 +14,8 @@ const drizzle = new Drizzle(drizzleOptions);
 
 
 class App extends React.Component{
-	constructor(props){
-		super(props);
-		this.state = {loading: null, drizzleState: null};
-	}
+	state = {loading: null, drizzleState: null};
+	
 
 	componentDidMount() {
 		const { drizzle } = this.props;

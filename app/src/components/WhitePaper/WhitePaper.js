@@ -4,8 +4,18 @@ import './WhitePaper.css';
 class WhitePaper extends React.Component{
 	constructor(props){
 		super(props);
-		this.state = {drizzleLoaded: null};
 }
+
+
+	componentDidMount() {
+		const { drizzle } = this.props;
+		this.unsubscribe = drizzle.store.subscribe(() => {
+		const drizzleState = drizzle.store.getState();
+		if (drizzleState.drizzleStatus.initialized) {
+		  this.setState({ loading: false, drizzleState });
+    }
+  });
+
 	render(){
 	  return (
            <div>
