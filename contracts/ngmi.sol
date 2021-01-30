@@ -1,48 +1,19 @@
-// SPDX-License-Identifier: MIT
 
-pragma solidity ^0.7.1;
-
-import "./lib/ERC20.sol";
-import "./lib/SafeERC20.sol";
-
-contract ngmi is ERC20 {
-  using SafeERC20 for IERC20;
-
-  address public governance;
-  address public ngmi_minter;
-  uint256 public MAX_TOKENS = 100 ether;
-
-  constructor (string memory name, string memory symbol) ERC20(name, symbol) {
-    // Initial governance is NGMI deployer
-    governance = msg.sender;
+	pragma solidity >=0.4.0 < 0.8.0;  
 	
-  }
-
-  function mint_ngmi(address to, uint256 amount) public {
-    require(msg.sender == ngmi_minter, "must be ngmi_minter");
-    require(this.totalSupply() + amount < MAX_TOKENS, "cannot mint more than MAX_TOKENS");
-    _mint(to, amount);
-  }
-
-  function set_minter(address to) external {
-    require(msg.sender == governance, "must be governance");
-    ngmi_minter = to;
-  }
-
-  function set_governance(address to) external {
-    require(msg.sender == governance, "must be governance");
-    governance = to;
-  }
-
-  event ErcSwept(address who, address to, address token, uint256 amount);
-  function erc_sweep(address _token, address _to) public {
-    require(msg.sender == governance, "must be governance");
-
-    IERC20 tkn = IERC20(_token);
-    uint256 tBal = tkn.balanceOf(address(this));
-    tkn.safeTransfer(_to, tBal);
-
-    emit ErcSwept(msg.sender, _to, _token, tBal);
-  }
-
+	import "@openzeppelin/contracts/token/ERC20/ERC20Detailed.sol";
+	import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+	import "@openzeppelin/contracts/ownership/Ownable.sol";
+	
+	contract NGMI is Ownable,ERC20,ERC20Detailed("Deplatformed", "NGMI", 0){
+		
+		function minerReward() public {
+			require(balanceOf(msg.sender) == 0, "You only need one of these for verification - don't be greedy");
+			_mint(msg.sender, 1);
+		}
+		
+		function isNative() public view returns(bool){
+			require(balanceOf(msg.sender) > 0);
+			return true;
+		}
 }

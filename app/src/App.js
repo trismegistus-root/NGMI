@@ -1,41 +1,23 @@
 import React from "react";
-import { DrizzleContext } from "@drizzle/react-plugin";
 import { Drizzle } from "@drizzle/store";
 import ngmi from './contracts/ngmi.json';
 import "./App.css";
+import WhitePaper from "./components/WhitePaper/WhitePaper.js";
 
+//----Begin Application Code-----//
 const drizzleOptions = {
-  contracts: [ngmi],
-  web3: {
-    fallback: {
-      type: "ws",
-      url: "ws://127.0.0.1:9545",
-    },
-  },
+  contracts: [ngmi]
 };
 
 const drizzle = new Drizzle(drizzleOptions);
 
 const App = () => {
-  return (
-    <DrizzleContext.Provider drizzle={drizzle}>
-      <DrizzleContext.Consumer>
-        {drizzleContext => {
-          const { drizzle, drizzleState, initialized } = drizzleContext;
-
-          if (!initialized) {
-            return "Loading..."
-          }
-
           return (
            <div>
-				
+				<WhitePaper/>
 		   </div>
           )
-        }}
-      </DrizzleContext.Consumer>
-    </DrizzleContext.Provider>
-  );
+       
 }
 
 export default App;
