@@ -6,7 +6,7 @@ class WhitePaper extends React.Component{
 		super(props);
 		this.state = {drizzleLoaded: null};
 }
-
+	render(){
 	  return (
            <div>
 				<div id = "quick-intro">
@@ -33,6 +33,7 @@ class WhitePaper extends React.Component{
 				</div>
 		   </div>
           )
+	}
 }
 
 export default WhitePaper;
