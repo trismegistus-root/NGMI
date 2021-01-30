@@ -10,8 +10,8 @@ class WhitePaper extends React.Component{
 	  return (
            <div>
 				<div id = "quick-intro">
-				<h1>Deplatformed Token</h1>
-				<p>Below is a faucet for Deplatformed Token (symbol: NGMI).
+				<h1>Replatform Token</h1>
+				<p>Below is a faucet for Replatform Token (symbol: NGMI).
 				In the event that our favorite forums, boards, or communities in-general are shut-down,
 				having this token in your wallet will allow us to find each other. 
 				Due to recent events, I am releasing this faucet before the app is complete. 
@@ -21,7 +21,7 @@ class WhitePaper extends React.Component{
 				<ol>
 				<li>ERC721 that can be requested for specific communities.</li>
 				<li>ERC721 creates owner for community ERC20 contract. Owner can then distribute ERC20 to respective community.</li>
-				<li>Deplatformed Token server will then ping requested forums and boards continuously, and an algorithm will determine if that address still exists</li>
+				<li>Deplatformed Token server will then ping requested forums and boards continuously, and an algorithm(most likely an oracle) will determine if that address still exists</li>
 				<li>If the algorithm determines that the address no longer exists, it will fire up a new address with features similar to the 404'd address</li>
 				<li>The faucet for that 404'd address token will pause all further minting so no one new may enter the community for a time</li>
 				<li>For a period of time determined by a specific community, the only way onto the new platform will be to verify identity with Deplatformed Token</li>

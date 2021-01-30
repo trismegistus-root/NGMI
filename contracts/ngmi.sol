@@ -6,11 +6,16 @@
 	import "@openzeppelin/contracts/ownership/Ownable.sol";
 	import "@openzeppelin/contracts/lifecycle/Pausable.sol";
 	
-	contract NGMI is Ownable,Pausable,ERC20,ERC20Detailed("Deplatformed", "NGMI", 0){
+	contract NGMI is Ownable,Pausable,ERC20,ERC20Detailed("Replatform", "NGMI", 0){
 		
 		function getToken() public whenNotPaused{
 			require(balanceOf(msg.sender) == 0, "You only need one of these for verification - don't be greedy");
 			_mint(msg.sender, 1);
+		}
+
+		function faucetGetToken(address newfriend) public whenNotPaused{
+			require(balanceOf(msg.sender) == 0, "You only need one of these for verification - don't be greedy");
+			_mint(newfriend, 1);
 		}
 		
 		function isNative() public view returns(bool){
