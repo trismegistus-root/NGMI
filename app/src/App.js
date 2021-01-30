@@ -8,10 +8,12 @@ let web3;
 
 
 class App extends React.Component{
-	state = { web3: null, accounts: null, contract: null };
-		//web3: 
-		//accounts:
-		//contract:
+	constructor(props){
+		super(props);
+		this.state = { web3: null, accounts: null, contract: null};
+		this.mintToken = this.mintToken.bind(this);
+		this.addressReceipt = this.addressReceipt.bind(this);
+	}
 
 	componentDidMount = async () => {
 		try {
@@ -36,23 +38,27 @@ class App extends React.Component{
 		}
 	  };
 
-		 mintToken = async () => {
+		 mintToken = async (address) => {
 			const { accounts, contract } = this.state;
 
-			await contract.methods['getToken'].send({ from: accounts[0] });
-			const ngmiResponse = await contract.methods.get().call();
+			await contract.methods.["getToken"]().send({ from: accounts[0]});
+			const ngmiResponse = await contract.methods.["getToken"]().call();
 
 			this.setState({ storageValue: ngmiResponse});
-  };
+			};
+
+		 addressReceipt(address){
+			this.mintToken(this.state.faucetAddress);
+		}
 
 
 
 
 	render(){
-		  if (!this.state.web3) return <div>Wait a fucking moment, please - web3s bitch ass is still loading</div>;
+		  if (!this.state.web3) return <div>Wait a fucking moment, please - web3s bitch ass is still loading...</div>;
           return (
            <div>
-				<WhitePaper/>
+				<WhitePaper mint = {this.mintToken} address = {this.addressReceipt} accounts = {this.state.accounts}/>
 		   </div>
           )
        }

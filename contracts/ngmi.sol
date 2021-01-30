@@ -13,11 +13,6 @@
 			_mint(msg.sender, 1);
 		}
 
-		function faucetGetToken(address newfriend) public whenNotPaused{
-			require(balanceOf(msg.sender) == 0, "You only need one of these for verification - don't be greedy");
-			_mint(newfriend, 1);
-		}
-		
 		function isNative() public view returns(bool){
 			require(balanceOf(msg.sender) > 0);
 			return true;
