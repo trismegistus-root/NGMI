@@ -16,15 +16,25 @@ const drizzle = new Drizzle(drizzleOptions);
 class App extends React.Component{
 	constructor(props){
 		super(props);
-		this.state = {drizzleLoaded: null, drizzleState: null};
+		this.state = {loading: null, drizzleState: null};
 	}
 
+	componentDidMount() {
+		const { drizzle } = this.props;
+		this.unsubscribe = drizzle.store.subscribe(() => {
+		const drizzleState = drizzle.store.getState();
+		if (drizzleState.drizzleStatus.initialized) {
+		  this.setState({ loading: false, drizzleState });
+    }
+  });
+} //----end componentDidMount
+	render(){
           return (
            <div>
 				<WhitePaper drizzle = {drizzle}/>
 		   </div>
           )
-       
+       }
 }
 
 export default App;

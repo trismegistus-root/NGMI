@@ -1,8 +1,12 @@
 import React from 'react';
 import './WhitePaper.css';
 
-function WhitePaper(props) {
-	
+class WhitePaper extends React.Component{
+	constructor(props){
+		super(props);
+		this.state = {drizzleLoaded: null};
+}
+
 	  return (
            <div>
 				<div id = "quick-intro">
