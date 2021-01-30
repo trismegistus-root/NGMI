@@ -15,6 +15,7 @@ class WhitePaper extends React.Component{
 		  this.setState({ loading: false, drizzleState });
     }
   });
+}
 
 	render(){
 	  return (
