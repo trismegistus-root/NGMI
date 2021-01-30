@@ -11,7 +11,14 @@ const drizzleOptions = {
 
 const drizzle = new Drizzle(drizzleOptions);
 
-const App = () => {
+
+
+class App extends React.Component{
+	constructor(props){
+		super(props);
+		this.state = {drizzleLoaded: null, drizzleState: null};
+	}
+
           return (
            <div>
 				<WhitePaper drizzle = {drizzle}/>
