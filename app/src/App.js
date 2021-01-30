@@ -14,7 +14,7 @@ const drizzle = new Drizzle(drizzleOptions);
 const App = () => {
           return (
            <div>
-				<WhitePaper/>
+				<WhitePaper drizzle = {drizzle}/>
 		   </div>
           )
        
