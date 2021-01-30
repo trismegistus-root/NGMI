@@ -11,21 +11,8 @@ const drizzleOptions = {
 
 const drizzle = new Drizzle(drizzleOptions);
 
-
-
 class App extends React.Component{
-	state = {loading: null, drizzleState: null};
-	
-
-	componentDidMount() {
-		const { drizzle } = this.props;
-		this.unsubscribe = drizzle.store.subscribe(() => {
-		const drizzleState = drizzle.store.getState();
-		if (drizzleState.drizzleStatus.initialized) {
-		  this.setState({ loading: false, drizzleState });
-    }
-  });
-} //----end componentDidMount
+	 //----end componentDidMount
 	render(){
           return (
            <div>
