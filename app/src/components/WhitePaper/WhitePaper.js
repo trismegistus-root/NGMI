@@ -42,7 +42,7 @@ function WhitePaper (props){
 				<li>For a period of time determined by a specific community, the only way onto the new platform will be to verify identity with Deplatformed Token</li>
 				</ol>
 				<p>Please note: the contract will only permit 1 token per wallet, so please dont waste your gas fees requesting more</p>
-				<p>If you would like to donate to the project, send ether to this address 0x97d765fFCf6f32d9d0e840A391aEe1d8FD144EF5</p>
+				<p>If you would like to donate to the project, send ether to this address 0x9A5963174dD8f36Db69b81E5E70C81bDFd9fcc74</p>
 				<p>If you would like to help with the project, add me on github at trismegistus-root</p>
 				<label for="faucet" id = "caption">Connect your wallet and press submit: </label>
 					<button name = "faucet" onClick={handleSubmit} type="submit">
