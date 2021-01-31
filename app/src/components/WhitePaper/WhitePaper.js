@@ -3,6 +3,7 @@ import './WhitePaper.css';
 
 function WhitePaper (props){
 	const [value, setValue] = useState("");
+	const [viewSupply, setViewSupply] = useState(props.supply);
 
 	const handleChange = e => {
 		setValue(e.target.value);
@@ -25,7 +26,7 @@ function WhitePaper (props){
 	  return (
            <div>
 				<div id = "quick-intro">
-				<h1>Replatform Token</h1> <h3> Total minted: {props.supply} </h3>
+				<h1>Replatform Token</h1> <h3> Total minted: {viewSupply} </h3>
 				<p>Below is a faucet for Replatform Token (symbol: NGMI).
 				In the event that our favorite forums, boards, or communities in-general are shut-down,
 				having this token in your wallet will allow us to find each other. 

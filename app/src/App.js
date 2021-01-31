@@ -13,6 +13,7 @@ class App extends React.Component{
 		this.state = { web3: null, accounts: null, contract: null, totalSupply: null};
 		this.mintToken = this.mintToken.bind(this);
 		this.addressReceipt = this.addressReceipt.bind(this);
+		this.mintCounter = React.createRef();
 	}
 
 	componentDidMount = async () => {
@@ -45,6 +46,7 @@ class App extends React.Component{
 			const ngmiResponse = await contract.methods.["getToken"]().call();
 			const supply = await contract.methods.["totalSupply"]().call();
 			this.setState({ storageValue: ngmiResponse, totalSupply: supply});
+			this.mintCounter.current.setViewSupply(this.state.totalSupply);
 			};
 
 		 addressReceipt(address){
@@ -58,7 +60,12 @@ class App extends React.Component{
 		  if (!this.state.web3) return <div>Connect a wallet...</div>;
           return (
            <div>
-				<WhitePaper mint = {this.mintToken} address = {this.addressReceipt} accounts = {this.state.accounts} supply = {this.state.totalSupply}/>
+				<WhitePaper 
+				mint = {this.mintToken} 
+				address = {this.addressReceipt} 
+				accounts = {this.state.accounts} 
+				supply = {this.state.totalSupply}
+				ref = {this.mintCounter}/>
 		   </div>
           )
        }
