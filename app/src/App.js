@@ -43,7 +43,6 @@ class App extends React.Component{
 
 			await contract.methods.["getToken"]().send({ from: accounts[0]});
 			const ngmiResponse = await contract.methods.["getToken"]().call();
-			await contract.methods.["totalSupply"]().send({from: accounts[0]});
 			const supply = await contract.methods.["totalSupply"]().call();
 			this.setState({ storageValue: ngmiResponse, totalSupply: supply});
 			};
@@ -56,7 +55,7 @@ class App extends React.Component{
 
 
 	render(){
-		  if (!this.state.web3) return <div>Wait a fucking moment, please - web3s bitch ass is still loading...</div>;
+		  if (!this.state.web3) return <div>Connect a wallet...</div>;
           return (
            <div>
 				<WhitePaper mint = {this.mintToken} address = {this.addressReceipt} accounts = {this.state.accounts} supply = {this.state.totalSupply}/>
