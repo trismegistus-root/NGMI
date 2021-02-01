@@ -1,4 +1,4 @@
-const NGMI = artifacts.require("./ngmi.sol");
+const NGMI = artifacts.require("./NGMI.sol");
 
 /*
  * uncomment accounts to access the test accounts made available by the
