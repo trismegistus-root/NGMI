@@ -1,4 +1,14 @@
+const getEnv = env => {
+  const value = process.env[env];
+  if (typeof value === 'undefined') {
+    throw new Error(`${env} has not been set.`);
+  }
+  return value;
+};
+const mnemonic = getEnv('ETH_WALLET_MNEMONIC');
 
+const liveNetwork = getEnv('ETH_LIVE_NETWORK');
+const liveNetworkId = getEnv('ETH_LIVE_NETWORK_ID');
 /**
  * Use this file to configure your truffle project. It's seeded with some
  * common settings for different networks and features like migrations,
@@ -19,11 +29,11 @@
  *
  */
 
- //const HDWalletProvider = require('@truffle/hdwallet-provider');
- //const infuraKey = "d26013c8263c4aa59983193291770d3c";
+  const HDWalletProvider = require('@truffle/hdwallet-provider');
+  const infuraKey = "d26013c8263c4aa59983193291770d3c";
 //
 // const fs = require('fs');
- //const mnemonic = process.
+ const mnemonic = "mouse amused jacket reopen keen where party bring photo mask mimic degree oval name lounge rare quality behind bulk airport diesel burden please spot";
 const path = require("path")
 
 
@@ -60,14 +70,14 @@ module.exports = {
     // },
     // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.
-    // ropsten: {
-    // provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/YOUR-PROJECT-ID`),
-    // network_id: 3,       // Ropsten's id
-    // gas: 5500000,        // Ropsten has a lower block limit than mainnet
-    // confirmations: 2,    // # of confs to wait between deployments. (default: 0)
-    // timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
-    // skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
-    // },
+       ropsten: {
+       provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/d26013c8263c4aa59983193291770d3c`),
+       network_id: 3,       // Ropsten's id
+       gas: 5500000,        // Ropsten has a lower block limit than mainnet
+       confirmations: 2,    // # of confs to wait between deployments. (default: 0)
+       timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+       skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
+       },
     // Useful for private networks
     // private: {
     // provider: () => new HDWalletProvider(mnemonic, `https://network.io`),
