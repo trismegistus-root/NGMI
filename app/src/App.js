@@ -4,6 +4,7 @@ import "./App.css";
 import WhitePaper from "./components/WhitePaper/WhitePaper.js";
 import Web3 from 'web3';
 
+
 let web3;
 
 
@@ -13,10 +14,10 @@ class App extends React.Component{
 		this.state = { web3: null, accounts: null, contract: null, totalSupply: null};
 		this.mintToken = this.mintToken.bind(this);
 		this.addressReceipt = this.addressReceipt.bind(this);
-		this.mintCounter = React.createRef();
 	}
 
 	componentDidMount = async () => {
+		
 		try {
 		  web3 = new Web3(Web3.givenProvider || "ws://localhost:8545");  //set this.state({web3})
 		  const accounts = await web3.eth.getAccounts();				 //set this.state({accounts})
@@ -46,15 +47,11 @@ class App extends React.Component{
 			const ngmiResponse = await contract.methods.["getToken"]().call();
 			const supply = await contract.methods.["totalSupply"]().call();
 			this.setState({ storageValue: ngmiResponse, totalSupply: supply});
-			this.mintCounter.current.setViewSupply(this.state.totalSupply);
 			};
 
 		 addressReceipt(address){
 			this.mintToken(this.state.faucetAddress);
 		}
-
-
-
 
 	render(){
 		  if (!this.state.web3) return <div>Connect a wallet...</div>;
