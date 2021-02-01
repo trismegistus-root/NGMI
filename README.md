@@ -2,15 +2,16 @@
 Inside joke, collectible token - doubles as anonymous verification of identity in the event of deplatforming
 
 ## Stack:  
-Truffle
-Ganache
-Truffle Teams
-Web3
-React.js (JSX)
-Node.js
-Javascript (ES6)
-HTML
-CSS
+Truffle  
+Ganache  
+Truffle Teams  
+Open Zeppelin  
+Web3  
+React.js (JSX)  
+Node.js  
+Javascript (ES6)  
+HTML  
+CSS  
 
 ### Purpose  
 Originally, this project was meant to be a collectible token for anonymous crypto communities. NGMI token was
