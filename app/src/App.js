@@ -1,5 +1,5 @@
 import React from "react";
-import ngmi from './contracts/ngmi.json';
+import NGMI from './contracts/NGMI.json';
 import "./App.css";
 import WhitePaper from "./components/WhitePaper/WhitePaper.js";
 import Web3 from 'web3';
@@ -24,9 +24,9 @@ class App extends React.Component{
 
 		  // Get the contract instance.
 		  const networkId = await web3.eth.net.getId();					
-		  let deployedNetwork = ngmi.networks[networkId];
+		  let deployedNetwork = NGMI.networks[networkId];
 		  const ngmiInstance = new web3.eth.Contract(
-			ngmi.abi,
+			NGMI.abi,
 			deployedNetwork && deployedNetwork.address,
 		  );														     //set this.state({contract})
 		  const supply = await ngmiInstance.methods.["totalSupply"]().call();
