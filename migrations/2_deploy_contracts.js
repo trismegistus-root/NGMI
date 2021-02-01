@@ -1,5 +1,5 @@
-const ngmi = artifacts.require("ngmi");
+const NGMI = artifacts.require("NGMI");
 
 module.exports = function(deployer) {
-  deployer.deploy(ngmi, "PinkWojaks", "ngmi");
+  deployer.deploy(NGMI, "PinkWojaks", "NGMI");
 };
