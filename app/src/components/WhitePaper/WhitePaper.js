@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+
 import './WhitePaper.css';
 
 function WhitePaper (props){
 	const handleSubmit = e => {
 		e.preventDefault();
 		alert("Confirm address:" + props.accounts[0]);
+		props.address(props.accounts[0]);
   };
 
 	

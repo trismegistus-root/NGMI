@@ -62,7 +62,7 @@ class App extends React.Component{
 				address = {this.addressReceipt} 
 				accounts = {this.state.accounts} 
 				supply = {this.state.totalSupply}
-				ref = {this.mintCounter}/>
+				/>
 		   </div>
           )
        }
