@@ -1,5 +1,5 @@
-# NGMI  
-Inside joke, collectible token - doubles as anonymous verification of identity in the event of deplatforming
+# Replatform Token (Symbol: NGMI)
+Anonymous verification of identity in the event of deplatforming
 
 ## Purpose  
 Originally, this project was meant to be a collectible token for anonymous crypto communities. NGMI token was
